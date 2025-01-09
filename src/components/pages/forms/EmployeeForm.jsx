@@ -40,11 +40,12 @@ function EmployeeForm() {
     mutationFn: async (values) =>
       await axios.post(`users/employee/signup`, values),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["get_employee"] });
+      queryClient.invalidateQueries({ queryKey: ["get_employees"] });
       document.getElementById("employee_modal").close();
       setValues(initialValues);
       showSuccessToast("Employee added successfully");
     },
+    
     onError: () => {
       document.getElementById("employee_modal").close();
       showErrorToast("Failed to add employee");
