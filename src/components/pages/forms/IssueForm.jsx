@@ -8,6 +8,7 @@ import { X } from "lucide-react";
 import { showSuccessToast, showErrorToast } from "../../../lib/Toast";
 import CloseButton from "../../ui/CloseButton";
 
+
 const initialValues = {
   issue_building: "",
   issue_floor: "",
@@ -17,21 +18,25 @@ const initialValues = {
 };
 
 function IssueForm() {
+ 
   const { iss, setIss } = useContext(ActionContext);
   const [values, setValues] = useState(null);
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const queryClient = useQueryClient();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+ 
+ 
+  
 
   const { mutate } = useMutation({
     mutationKey: ["edit issue"],
     mutationFn: async ({ values, id }) =>
       await axios.put(`issues/update/${id}`, values),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["get_issues"] });
-      setIss(null);
       document.getElementById("issue_modal").close();
+      queryClient.invalidateQueries({ queryKey: ["get_issues"] });
       showSuccessToast("Issue updated successfully");
+      setIss(null);
     },
     onError: () => {
       showErrorToast("Failed to update issue");
@@ -47,10 +52,11 @@ function IssueForm() {
       queryClient.invalidateQueries({ queryKey: ["get_issues"] });
       setUploadedFiles([]);
       setValues(initialValues);
-      // setIss(null);
+      
       document.getElementById("issue_modal").close();
       // navigate("/allissues");
       showSuccessToast("Issue added successfully");
+      setIss(null);
     },
 
     onError: (error) => {

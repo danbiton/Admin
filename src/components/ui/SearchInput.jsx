@@ -1,5 +1,4 @@
 import React from "react";
-import { FaSearchengin } from "react-icons/fa";
 import { Search } from "lucide-react";
 function SearchInput({ setSearchInput, suggestions, suggestionKey, onClick }) {
   return (

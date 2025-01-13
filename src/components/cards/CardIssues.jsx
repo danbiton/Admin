@@ -7,7 +7,7 @@ import SearchInput from "../ui/SearchInput";
 import CardSelected from "./CardSelected";
 import ExportButton from "../ui/ExportButton.jsx";
 import { ActionContext } from "../contexts/ActionContext.jsx";
-import { exportToXL } from "../../lib/Index.jsx";
+import { exportToXL } from "../../lib/index.jsx";
 import WaveLoader from "../ui/WaveLoader.jsx";
 import AddButton from "../ui/AddButton.jsx";
 import { Filter, ChevronDown } from "lucide-react";
