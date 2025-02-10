@@ -4,9 +4,9 @@ import { AuthContext } from "../contexts/AuthContext";
 import { ActionContext } from "../contexts/ActionContext";
 
 function NavAdmin() {
-  const { signOut } = useContext(AuthContext);
-  const { man, handleEditManager } = useContext(ActionContext);
-  const { user } = useContext(AuthContext);
+  
+  const {  handleEditManager } = useContext(ActionContext);
+  const { user, signOut  } = useContext(AuthContext);
 
   //   const dropdownRef = useRef(null);
 
@@ -25,15 +25,15 @@ function NavAdmin() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  if (!user) {
-    console.error("User object is undefined");
-    return <div>Access Denied</div>;
-  }
+  // if (!user) {
+  //   console.error("User object is undefined");
+  //   return <div>Access Denied</div>;
+  // }
 
-  if (!user.permission) {
-    console.error("Permission is not defined for the user");
-    return <div>Access Denied</div>;
-  }
+  // if (!user.permission) {
+  //   console.error("Permission is not defined for the user");
+  //   return <div>Access Denied</div>;
+  // }
   return (
     <nav className="bg-white shadow-lg">
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">

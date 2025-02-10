@@ -9,14 +9,17 @@ function AuthProvider({ children }) {
   // console.log(children)
   const [isAuth, setIsAuth] = useState(false);
   const [user, setUser] = useState(null);
+  
 
   async function handleLogin(values) {
     try {
       const { data } = await axios.post("/users/manager/signin", values);
+      console.log(data)
       if (data.success) {
         showSuccessToast(data.message);
         setIsAuth(true);
         setUser(data.data);
+        console.log(user)
         return true;
       }
     } catch (error) {
@@ -33,6 +36,7 @@ function AuthProvider({ children }) {
       if (data.success) {
         setIsAuth(true);
         setUser(data.user);
+        console.log(user)
       }
     } catch (error) {
       console.log(error);
@@ -79,6 +83,8 @@ function AuthProvider({ children }) {
     handleManager,
     user,
     signOut,
+    setUser,
+    setIsAuth
   };
 
   return (
