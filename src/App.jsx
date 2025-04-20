@@ -21,7 +21,7 @@ import ContactPage from "./components/pages/publicPages/mainPage/ContactPage";
 import AboutPage from "./components/pages/publicPages/mainPage/AboutPage";
 import LeadershipTeam from "./components/pages/publicPages/mainPage/LeadershipTeam";
 import { Component } from "lucide-react";
-import BackgroundLayout from "./components/ui/backgroundLayout";
+import BackgroundLayout from "./components/ui/BackgroundLayout";
 import IssueModal from "./components/modals/IssueModal";
 import ErrorPage from "./components/ErrorPage";
 
