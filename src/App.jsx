@@ -23,6 +23,7 @@ import LeadershipTeam from "./components/pages/publicPages/mainPage/LeadershipTe
 import { Component } from "lucide-react";
 import BackgroundLayout from "./components/ui/BackgroundLayout";
 import IssueModal from "./components/modals/IssueModal";
+import ErrorPage from "./components/ErrorPage";
 
 function ProtectedRoute({ isAuth }) {
   return isAuth ? <Outlet /> : <Navigate to="/" replace />;
@@ -50,137 +51,110 @@ function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<Root isAuth={isAuth} />}>
+      <Route
+        path="/"
+        element={<Root isAuth={isAuth} />}
+        errorElement={<ErrorPage />} // ✅ בדיוק כאן
+      >
         {/* Public Routes */}
         <Route element={isAuth ? <Navigate to={"/welcomepage"} /> : <Outlet />}>
           <Route
             index
             lazy={async () => ({
-              Component: (
-                await import("./components/pages/publicPages/mainPage/HomePage")
-              ).default,
+              Component: (await import("./components/pages/publicPages/mainPage/HomePage")).default,
             })}
           />
           <Route
             path="login"
             lazy={async () => ({
-              Component: (await import("./components/pages/publicPages/Login"))
-                .default,
+              Component: (await import("./components/pages/publicPages/Login")).default,
             })}
           />
         </Route>
-
+  
+        {/* Protected Routes */}
         <Route element={<ProtectedRoute isAuth={isAuth} />}>
           <Route
             path="welcomepage"
             lazy={async () => ({
-              Component: (
-                await import("./components/pages/privatePages/WelcomePage")
-              ).default,
+              Component: (await import("./components/pages/privatePages/WelcomePage")).default,
             })}
           />
-
-          {/* Private Routes */}
           {isAuth && user.permission === "Admin" && (
             <Route
               path="allemployees"
               lazy={async () => ({
-                Component: (
-                  await import("./components/pages/privatePages/AllEmployees")
-                ).default,
+                Component: (await import("./components/pages/privatePages/AllEmployees")).default,
               })}
             />
           )}
           <Route
             path="Professions"
             lazy={async () => ({
-              Component: (
-                await import("./components/pages/privatePages/AllProfessions")
-              ).default,
+              Component: (await import("./components/pages/privatePages/AllProfessions")).default,
             })}
           />
           <Route
             path="addprofession"
             lazy={async () => ({
-              Component: (
-                await import("./components/pages/forms/ProfessionForm")
-              ).default,
+              Component: (await import("./components/pages/forms/ProfessionForm")).default,
             })}
           />
           <Route
             path="allmanagers"
             lazy={async () => ({
-              Component: (
-                await import("./components/pages/privatePages/AllManagers")
-              ).default,
+              Component: (await import("./components/pages/privatePages/AllManagers")).default,
             })}
           />
           <Route
             path="addissue"
             lazy={async () => ({
-              Component: (await import("./components/pages/forms/IssueForm"))
-                .default,
+              Component: (await import("./components/pages/forms/IssueForm")).default,
             })}
           />
           <Route
             path="allissues"
             lazy={async () => ({
-              Component: (await import("./components/cards/CardIssues"))
-                .default,
+              Component: (await import("./components/cards/CardIssues")).default,
             })}
           />
           <Route
             path="issueshistory"
             lazy={async () => ({
-              Component: (await import("./components/cards/IssuesHistory"))
-                .default,
+              Component: (await import("./components/cards/IssuesHistory")).default,
             })}
           />
         </Route>
-        {/* some routes */}
+  
+        {/* Extra Public Routes */}
         <Route
           path="LeadershipTeam"
           lazy={async () => ({
-            Component: (
-              await import(
-                "./components/pages/publicPages/mainPage/LeadershipTeam"
-              )
-            ).default,
+            Component: (await import("./components/pages/publicPages/mainPage/LeadershipTeam")).default,
           })}
         />
         <Route
           path="AboutPage"
           lazy={async () => ({
-            Component: (
-              await import("./components/pages/publicPages/mainPage/AboutPage")
-            ).default,
+            Component: (await import("./components/pages/publicPages/mainPage/AboutPage")).default,
           })}
         />
         <Route
           path="ContactPage"
           lazy={async () => ({
-            Component: (
-              await import(
-                "./components/pages/publicPages/mainPage/ContactPage"
-              )
-            ).default,
+            Component: (await import("./components/pages/publicPages/mainPage/ContactPage")).default,
           })}
         />
         <Route
           path="Offices"
           lazy={async () => ({
-            Component: (
-              await import("./components/pages/publicPages/mainPage/Offices")
-            ).default,
+            Component: (await import("./components/pages/publicPages/mainPage/Offices")).default,
           })}
         />
-
-        {/* <Route path="*" element={<Navigate to="/" replace />} />
-        {/* </Routh> */}
       </Route>
     )
   );
-
+  
   return (
     <>
       <RouterProvider router={router} />
