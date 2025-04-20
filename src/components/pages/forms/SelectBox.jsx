@@ -25,6 +25,7 @@ function SelectBox({ handleChange, id, value }) {
 
         {isLoading && <option disabled>Loading...</option>}
 
+
   {isError && <option disabled>Error loading...</option>}
 
   {Array.isArray(data) && data.map((profession) => (
@@ -32,6 +33,7 @@ function SelectBox({ handleChange, id, value }) {
       {profession.profession_name}
     </option>
   ))}
+
       </select>
     </div>
   );
