@@ -23,8 +23,8 @@ function SelectBox({ handleChange, id, value }) {
       >
         <option value="">Choose Profession</option>
 
-        {isLoading && <div>Loading...</div>}
-        {isError && <div>{error}</div>}
+        {isLoading && <option>Loading...</option>}
+        {isError && <option>{error}</option>}
         {data?.map((profession) => (
           <option key={profession._id} value={profession._id}>
             {profession.profession_name}
