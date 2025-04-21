@@ -53,7 +53,7 @@ function ProfessionsTable({ professions }) {
           <tbody className="bg-white divide-y divide-amber-100">
             {/* Row 1 */}
             {professions.map((profession) => (
-              <ProfessionsTableRow profession={profession} mutate={mutate} />
+              <ProfessionsTableRow key={profession._id} profession={profession} mutate={mutate} />
             ))}
           </tbody>
         </table>

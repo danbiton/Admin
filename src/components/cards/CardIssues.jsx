@@ -153,7 +153,8 @@ function CardIssues() {
         {isError && <div>{error}</div>}
         {!selected &&
           data?.Allissues?.map((issue) => (
-            <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-4 rounded-3xl shadow-xl w-80">
+            <div key={issue._id}
+            className="bg-gradient-to-br from-amber-50 to-orange-50 p-4 rounded-3xl shadow-xl w-80">
               {/* Location Pills */}
               <div className="flex space-x-2 mb-3">
                 <div className="bg-white px-3 py-1.5 rounded-xl shadow-md flex items-center space-x-2 border border-amber-100">
