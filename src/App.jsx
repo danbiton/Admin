@@ -25,7 +25,7 @@ import BackgroundLayout from "./components/ui/BackgroundLayout";
 import IssueModal from "./components/modals/IssueModal";
 import ErrorPage from "./components/ErrorPage";
 
-import {useEffect} from "react;
+import {useEffect} from "react"
 
 
 function ProtectedRoute({ isAuth }) {
