@@ -8,7 +8,6 @@ import { X } from "lucide-react";
 import { showSuccessToast, showErrorToast } from "../../../lib/Toast";
 import CloseButton from "../../ui/CloseButton";
 
-
 const initialValues = {
   issue_building: "",
   issue_floor: "",
@@ -18,15 +17,11 @@ const initialValues = {
 };
 
 function IssueForm() {
- 
   const { iss, setIss } = useContext(ActionContext);
-  const [values, setValues] = useState(null);
+  const [values, setValues] = useState(initialValues);
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const queryClient = useQueryClient();
   // const navigate = useNavigate();
- 
- 
-  
 
   const { mutate } = useMutation({
     mutationKey: ["edit issue"],
@@ -52,7 +47,7 @@ function IssueForm() {
       queryClient.invalidateQueries({ queryKey: ["get_issues"] });
       setUploadedFiles([]);
       setValues(initialValues);
-      
+
       document.getElementById("issue_modal").close();
       // navigate("/allissues");
       showSuccessToast("Issue added successfully");
@@ -109,7 +104,6 @@ function IssueForm() {
     e.target.value = "";
   };
 
-  
   return (
     <div className=" w-full p-4 flex items-center justify-center ">
       <div className="bg-orange-50 p-4 md:p-6 rounded-2xl shadow-lg w-full max-w-4xl h-[85vh] flex flex-col">

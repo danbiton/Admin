@@ -48,7 +48,11 @@ function EmployeesTable({ employees }) {
           <tbody className="bg-white divide-y divide-amber-100">
             {/* Row 1 */}
             {employees.map((employee) => (
-              <TableRow employee={employee} mutate={mutate} />
+              <TableRow
+                key={employee._id}
+                employee={employee}
+                mutate={mutate}
+              />
             ))}
           </tbody>
         </table>
