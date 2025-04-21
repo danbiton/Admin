@@ -16,15 +16,14 @@ console.log(import.meta.env.VITE_API_BASE_URL);
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")).render(
-  <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <Suspense fallback={<div>...Loading</div>}>
+  <Suspense fallback={<div>...Loading</div>}>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
         <App />
-      </Suspense>
-      <ToastContainer />
-    </AuthProvider>
-    <ReactQueryDevtools initialIsOpen={false} />
-  </QueryClientProvider>
+
+        <ToastContainer />
+      </AuthProvider>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  </Suspense>
 );
-
-

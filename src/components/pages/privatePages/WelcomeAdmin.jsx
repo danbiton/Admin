@@ -17,7 +17,7 @@ function WelcomeAdmin() {
       countUsers: data.countUsers,
     }),
   });
-  console.log(data);
+  
 
   return (
     <div className="w-full">

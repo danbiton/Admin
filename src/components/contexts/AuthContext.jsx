@@ -29,13 +29,15 @@ function AuthProvider({ children }) {
   async function authUser() {
     try {
       const { data } = await axios.get("/users/auth");
-      console.log(data);
+     
       if (data.success) {
         setIsAuth(true);
         setUser(data.user);
       }
     } catch (error) {
-      console.log(error);
+      if (error.response?.status !== 401) {
+        console.error("Auth error:", error);
+      }
     }
   }
 

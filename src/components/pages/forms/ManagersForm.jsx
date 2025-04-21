@@ -89,7 +89,7 @@ function ManagerForm() {
             name="manager_name"
             type="text"
             placeholder="Enter first name"
-            value={values?.manager_name}
+            value={values?.manager_name || ""}
             onChange={handleChange}
           />
             
@@ -98,7 +98,7 @@ function ManagerForm() {
             name="manager_email"
             type="email"
             placeholder="Enter email address"
-            value={values?.manager_email}
+            value={values?.manager_email || ""}
             onChange={handleChange}
           />
            
@@ -116,7 +116,7 @@ function ManagerForm() {
                 type="password"
                 className="w-full rounded-xl border-2 border-amber-200 bg-amber-50 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
                 placeholder="Enter your password"
-                value={values?.manager_password}
+                value={values?.manager_password || ""}
                 onChange={handleChange}
               />
             </div>)}

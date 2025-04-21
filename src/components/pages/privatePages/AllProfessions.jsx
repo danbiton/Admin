@@ -20,13 +20,7 @@ function AllProfessions() {
     }),
   });
 
-  // הדפס את הנתונים בקונסול
-  useEffect(() => {
-    if (data) {
-      console.log("All Professions:", data.AllProfession);
-      console.log("Count:", data.count);
-    }
-  }, [data]);
+ 
 
   return (
     <div className="w-[90%] mx-auto">
