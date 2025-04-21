@@ -25,14 +25,11 @@ import BackgroundLayout from "./components/ui/BackgroundLayout";
 import IssueModal from "./components/modals/IssueModal";
 import ErrorPage from "./components/ErrorPage";
 
-
 function ProtectedRoute({ isAuth }) {
   return isAuth ? <Outlet /> : <Navigate to="/" replace />;
 }
 
 function Root({ isAuth }) {
-  console.log(isAuth);
-
   return (
     <>
       <BackgroundLayout>
@@ -55,7 +52,7 @@ function App() {
       <Route
         path="/"
         element={<Root isAuth={isAuth} />}
-        errorElement={<ErrorPage />} 
+        errorElement={<ErrorPage />}
       >
         {/* Public Routes */}
         <Route element={isAuth ? <Navigate to={"/welcomepage"} /> : <Outlet />}>
@@ -186,9 +183,7 @@ function App() {
 
   return (
     <>
-     
-        <RouterProvider router={router} />
-    
+      <RouterProvider router={router} fallbackElement={<div>Loading...</div>} />
     </>
   );
 }
