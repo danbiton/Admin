@@ -25,6 +25,9 @@ import BackgroundLayout from "./components/ui/BackgroundLayout";
 import IssueModal from "./components/modals/IssueModal";
 import ErrorPage from "./components/ErrorPage";
 
+import {useEffect} from "react;
+
+
 function ProtectedRoute({ isAuth }) {
   return isAuth ? <Outlet /> : <Navigate to="/" replace />;
 }
@@ -46,6 +49,9 @@ function Root({ isAuth }) {
 
 function App() {
   const { isAuth, user } = useContext(AuthContext);
+  useEffect(() => {
+    console.log("Base URL:", import.meta.env.VITE_API_BASE_URL);
+  }, []);
 
   const router = createBrowserRouter(
     createRoutesFromElements(
