@@ -25,6 +25,22 @@ function AuthProvider({ children }) {
       return false;
     }
   }
+  async function guestLogin() {
+    try {
+      const value = {manager_email: "bineomi@gmail.com", manager_password: "g1234"}
+      const { data } = await axios.post("/users/manager/signin", value);
+      if (data.success) {
+        showSuccessToast(data.message);
+        setIsAuth(true);
+        setUser(data.data);
+        return true;
+      }
+    } catch (error) {
+      const msg = error.response.data.error;
+      showErrorToast(msg);
+      return false;
+    }
+  }
 
   async function authUser() {
     try {
@@ -81,6 +97,7 @@ function AuthProvider({ children }) {
     handleManager,
     user,
     signOut,
+    guestLogin
   };
 
   return (
